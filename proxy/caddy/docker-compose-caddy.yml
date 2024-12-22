@@ -13,10 +13,9 @@ services:
     hostname: ${CADDY_HOSTNAME}
     container_name: ${CADDY_CONTAINER_NAME}
     volumes:
-      - "${CADDY_HOST_PATH}/config:/config"
-      - "${DATA_HOST_PATH}/caddy:/data"
-      - "${CADDY_HOST_PATH}/Caddyfile:/etc/caddy/Caddyfile"
-      - "${CADDY_HOST_PATH}/www:${APP_CODE_PATH_CONTAINER}${APP_CODE_CONTAINER_FLAG}"
+      - "${CADDY_WWW_HOST_PATH}:/var/www/html${APP_CODE_CONTAINER_FLAG}"
+      - "${DATA_HOST_PATH}/${CADDY_CONTAINER_NAME}:/data"
+      - "${CADDY_SITES_HOST_PATH}/Caddyfile:/etc/caddy/Caddyfile"
     ports:
       - "${CADDY_HOST_HTTP_PORT}:80"
       - "${CADDY_HOST_HTTPS_PORT}:443"

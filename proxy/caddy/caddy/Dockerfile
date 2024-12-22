@@ -1,4 +1,6 @@
 ARG CADDY_VERSION=latest
 FROM caddy:${CADDY_VERSION}
 
+LABEL maintainer="zz <373045134@qq.com>"
+
 EXPOSE 80 443

@@ -1,0 +1,26 @@
+volumes:
+  apache:
+    driver: ${VOLUMES_DRIVER}
+
+services:
+
+### APACHE ########################################
+  apache:
+    build:
+      context: ${APACHE_HOST_PATH}
+      args:
+        - APACHE_VERSION=${APACHE_VERSION}
+    container_name: ${APACHE_CONTAINER_NAME}
+    hostname: ${APACHE_HOSTNAME}
+    privileged: true
+    user: root
+    volumes:
+      - "${APACHE_WWW_HOST_PATH}:/app"
+      - "${LOG_HOST_PATH}/apache:/bitnami/apache/logs"
+      - "${APACHE_SITES_HOST_PATH}:/vhosts/:ro"
+    ports:
+      - "${APACHE_HOST_HTTP_PORT}:80"
+      - "${APACHE_HOST_HTTPS_PORT}:443"
+    networks:
+      backend:
+        ipv4_address: ${APACHE_BACKEND_IP}

@@ -1,5 +1,5 @@
+include ../.env
 include .env
-include ../../conf/mk/common.mk
 
 .PHONY: help test
 help:

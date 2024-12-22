@@ -22,9 +22,9 @@ Full Stack development environment based on Docker Compose.
 
 | 状态 | service | backend ip | frontend ip | version | 备注 |
 |---|---|---|---|---|---|
-| [&cross;] | nginx | 172.21.5.3 | 172.20.5.3 | 1.27-alpine | |
-| [&cross;] | apache | 172.21.5.4 | 172.20.5.4 | latest | |
-| [&cross;] | caddy | 172.21.5.5 | 172.20.5.5 | latest | |
+| [&check;] | nginx | 172.21.5.3 | 172.20.5.3 | 1.27 | |
+| [&check;] | apache | 172.21.5.4 | 172.20.5.4 | 2.4 | |
+| [&check;] | caddy | 172.21.5.5 | 172.20.5.5 | 2.9 | |
 | [&cross;] | traefik | 172.21.5.6 | 172.20.5.6 | latest | |
 
 ## FULLSTACK (全栈式集成服务)
@@ -39,8 +39,8 @@ Full Stack development environment based on Docker Compose.
 ### XXJOB (172.21.6.10~172.21.6.11) [完成]
 | status | service | backend ip | frontend ip | version | 备注 |
 |---|---|---|---|---|---|
-| xxjob | 172.21.6.10 | 172.20.6.10 | xxjob, 支持arm64 | |
-| xxjob-mysql | 172.21.6.11 | 172.20.6.11 | mysql8.3 | |
+| [&check;] | xxjob | 172.21.6.10 | 172.20.6.10 | xxjob, 支持arm64 | |
+| [&check;] | xxjob-mysql | 172.21.6.11 | 172.20.6.11 | mysql8.3 | |
 
 ## CLUSTER (集群服务)
 172.21.4.3 start

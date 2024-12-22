@@ -1,4 +1,4 @@
 include:
-  - ../../../conf/compose/docker-compose-common.yml
+  - ../../docker-compose-network.yml
   - ./docker-compose-meting-api.yml
   - ./docker-compose-caddy.yml

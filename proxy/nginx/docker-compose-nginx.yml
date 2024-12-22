@@ -12,10 +12,9 @@ services:
     container_name: ${NGINX_CONTAINER_NAME}
     hostname: ${NGINX_HOSTNAME}
     volumes:
-      - "${LOG_HOST_PATH}/${NGINX_CONTAINER_NAME}:/var/log/nginx"
-      - "${NGINX_WWW_HOST_PATH}:${APP_CODE_PATH_CONTAINER}${APP_CODE_CONTAINER_FLAG}"
-      # - "${NGINX_HOST_PATH}/sites:/etc/nginx/sites-available"
-      # - "${NGINX_HOST_PATH}/ssl:/etc/nginx/ssl"
+      - "${NGINX_WWW_HOST_PATH}:/app"
+      - "${LOG_HOST_PATH}/${NGINX_CONTAINER_NAME}:/bitnami/nginx/logs"
+      - "${NGINX_SITES_HOST_PATH}:/opt/bitnami/nginx/conf/server_blocks/:ro"
     ports:
       - "${NGINX_HOST_HTTP_PORT}:80"
       - "${NGINX_HOST_HTTPS_PORT}:443"

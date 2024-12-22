@@ -1,0 +1,11 @@
+# Docs: https://caddyserver.com/docs/caddyfile
+
+http://caddy-cdn.dce.test {
+    root * /var/www/html
+    file_server
+}
+
+http://localhost {
+    root * /var/www/html
+    file_server
+}
