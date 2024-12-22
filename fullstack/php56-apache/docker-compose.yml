@@ -1,3 +1,0 @@
-include:
-  - ../../../conf/compose/docker-compose-common.yml
-  - ./docker-compose-php56-apache.yml

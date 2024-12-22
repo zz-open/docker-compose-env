@@ -1,4 +1,0 @@
-services:
-  nginx:
-    ports:
-      - "8182:8182"

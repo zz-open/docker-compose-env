@@ -1,19 +1,11 @@
-networks:
-  frontend:
-    external: true
-    name: ${FRONTEND_NETWORK_NAME}
-  backend:
-    external: true
-    name: ${BACKEND_NETWORK_NAME}
-
 include:
-  - ../docker-compose-common.yml
-  - ./portainer/docker-compose-portainer.yml
-  - ./busybox/docker-compose-busybox.yml
+  - ../docker-compose-network.yml
+  # - ./portainer/docker-compose-portainer.yml
+  # - ./busybox/docker-compose-busybox.yml
   - ./mysql57/docker-compose-mysql.yml
-  - ./mysql8/docker-compose-mysql.yml
-  - ./redis-stack/docker-compose-redis-stack.yml
+  # - ./mysql8/docker-compose-mysql.yml
+  # - ./redis-stack/docker-compose-redis-stack.yml
   # - ./redis/docker-compose-redis.yml
-  - ./memcached/docker-compose-memcached.yml
-  - ./mongo/docker-compose-mongo.yml
+  # - ./memcached/docker-compose-memcached.yml
+  # - ./mongo/docker-compose-mongo.yml
   # - ./mongo/docker-compose-mongo-webui.yml

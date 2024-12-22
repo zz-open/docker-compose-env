@@ -1,5 +1,5 @@
+include ../../.env
 include .env
-include ../../../conf/mk/common.mk
 
 CONTAINERS=${MYSQL_CONTAINER_NAME} ${XXJOB_CONTAINER_NAME} 
 

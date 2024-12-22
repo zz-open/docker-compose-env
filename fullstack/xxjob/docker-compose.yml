@@ -1,4 +1,4 @@
 include:
-  - ../../../conf/compose/docker-compose-common.yml
+  - ../../docker-compose-network.yml
   - ./docker-compose-xxjob.yml
   - ./docker-compose-mysql.yml

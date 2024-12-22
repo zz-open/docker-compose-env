@@ -1,4 +1,4 @@
-ARG XXJOB_VERSION=2.4.1
+ARG XXJOB_VERSION=latest
 FROM docker.io/xuxueli/xxl-job-admin:${XXJOB_VERSION} as file
 
 FROM openjdk:8-jre-slim

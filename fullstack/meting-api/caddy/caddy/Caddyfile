@@ -1,5 +1,6 @@
 # Docs: https://caddyserver.com/docs/caddyfile
 
+# https
 https://meting-api.zdog.top {
     tls /etc/caddy/ssl/15890920_meting-api.zdog.top_nginx/meting-api.zdog.top.pem /etc/caddy/ssl/15890920_meting-api.zdog.top_nginx/meting-api.zdog.top.key
     handle_path /meting* {
@@ -9,6 +10,7 @@ https://meting-api.zdog.top {
     }
  }
 
+# http
 http://meting-api.zdog.top {
     handle_path /meting* {
        reverse_proxy http://meting-api:3000 {
@@ -17,7 +19,7 @@ http://meting-api.zdog.top {
     }
  }
 
-
+# http test
 http://testing.meting-api.zz {
     handle_path /meting* {
        reverse_proxy http://meting-api:3000 {

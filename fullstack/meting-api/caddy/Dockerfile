@@ -1,4 +1,4 @@
-ARG CADDY_VERSION=2.8.4-alpine
+ARG CADDY_VERSION=latest
 FROM caddy:${CADDY_VERSION}
 
 RUN mkdir -p /etc/caddy/ssl
