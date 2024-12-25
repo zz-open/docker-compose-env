@@ -1,0 +1,30 @@
+volumes:
+  starrocks-cn:
+    driver: ${VOLUMES_DRIVER}
+
+services:
+### STARROCKS ##############################################
+  starrocks-cn:
+    build:
+      context: ${STARROCKS_HOST_PATH}
+      args:
+        - STARROCKS_VERSION=${STARROCKS_VERSION}
+    command:
+      - /bin/bash
+      - -c
+      - |
+        sleep 15s;
+        ulimit -u 65535;
+        ulimit -n 65535;
+        mysql --connect-timeout 2 -h starrocks-fe -P9030 -uroot -e "ALTER SYSTEM ADD COMPUTE NODE \"starrocks-cn:9050\";"
+        /opt/starrocks/cn/bin/start_cn.sh
+    container_name: ${STARROCKS_CONTAINER_NAME}
+    hostname: ${STARROCKS_HOSTNAME}
+    ports:
+      - "9030:9030"
+      - "8030:8030"
+    environment:
+      TZ: ${TZ}
+    networks:
+      backend:
+        ipv4_address: ${STARROCKS_BACKEND_IP}

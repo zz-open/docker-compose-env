@@ -42,6 +42,11 @@ Full Stack development environment based on Docker Compose.
 | [&check;] | xxjob | 172.21.6.10 | 172.20.6.10 | xxjob, 支持arm64 | |
 | [&check;] | xxjob-mysql | 172.21.6.11 | 172.20.6.11 | mysql8.3 | |
 
+### STARROCKS (172.21.6.20~172.21.6.25) [完成]
+| status | service | backend ip | frontend ip | version | 备注 |
+|---|---|---|---|---|---|
+| [&check;] | starrocks | 172.21.6.20 | 172.20.6.20 | 3.3-latest | |
+
 ## CLUSTER (集群服务)
 172.21.4.3 start
 

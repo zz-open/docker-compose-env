@@ -1,0 +1,21 @@
+volumes:
+  starrocks-fe:
+    driver: ${VOLUMES_DRIVER}
+
+services:
+### STARROCKS ##############################################
+  starrocks-fe:
+    build:
+      context: ${STARROCKS_HOST_PATH}
+      args:
+        - STARROCKS_VERSION=${STARROCKS_VERSION}
+    container_name: ${STARROCKS_CONTAINER_NAME}
+    hostname: ${STARROCKS_HOSTNAME}
+    ports:
+      - "9030:9030"
+      - "8030:8030"
+    environment:
+      TZ: ${TZ}
+    networks:
+      backend:
+        ipv4_address: ${STARROCKS_BACKEND_IP}
