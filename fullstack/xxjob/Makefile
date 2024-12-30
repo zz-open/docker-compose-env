@@ -14,13 +14,3 @@ help:
 
 test:
 	@echo "test ..."
-build:
-	$(call FUNC_DC_BUILD,${CONTAINERS})
-start:
-	$(call FUNC_DC_UP,${CONTAINERS})
-
-.PHONY: enter_admin enter_mysql
-enter_admin:
-	$(call FUNC_DC_EXEC,${XXJOB_CONTAINER_NAME},"/bin/bash")
-enter_mysql:
-	$(call FUNC_DC_EXEC,${MYSQL_CONTAINER_NAME},"/bin/bash")

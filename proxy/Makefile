@@ -12,10 +12,6 @@ test:
 	@echo "test ..."
 	@echo ${DC_EXEC}
 
-.PHONY: enter_apache
-enter_apache:
-	@${DC_EXEC} ${APACHE_CONTAINER_NAME} bash
-
 .PHONY: copy_apache_conf
 copy_apache_conf:
 	@docker run --rm httpd:2.4 cat /usr/local/apache2/conf/httpd.conf > my-httpd.conf

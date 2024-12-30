@@ -1,9 +1,11 @@
 ARG XXJOB_VERSION=latest
-FROM docker.io/xuxueli/xxl-job-admin:${XXJOB_VERSION} as file
+FROM xuxueli/xxl-job-admin:${XXJOB_VERSION} AS builder
+
+LABEL maintainer="zz <373045134@qq.com>"
 
 FROM openjdk:8-jre-slim
-COPY --from=file /app.jar /app.jar
-LABEL maintainer="zz <373045134@qq.com>"
+
+COPY --from=builder /app.jar /app.jar
 
 ENV PARAMS=""
 ENV TZ=PRC
