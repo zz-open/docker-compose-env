@@ -1,6 +1,10 @@
 networks:
   rabbitmq-cluster-network:
     driver: bridge
+    
+secrets:
+  rabbitmq-erlang-cookie:
+    file: "${RABBITMQ_HOST_PATH}/.erlang.cookie"
 
 services:
   rabbitmq1:

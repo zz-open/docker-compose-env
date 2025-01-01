@@ -1,4 +1,6 @@
 include:
   - ../../docker-compose-network.yml
-  - ./xxjob/docker-compose-xxjob.yml
-  - ./mysql/docker-compose-mysql.yml
+  - ./kafka/docker-compose-kafka-zoo.yml
+  - ./kafka-ui/docker-compose-kafka-ui.yml
+  - ./zookeeper/docker-compose-zookeeper.yml
+  - ./zoonavigator/docker-compose-zoonavigator.yml

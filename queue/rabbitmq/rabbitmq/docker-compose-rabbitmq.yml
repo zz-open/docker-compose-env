@@ -1,0 +1,29 @@
+networks:
+  rabbitmq:
+    driver: bridge
+
+services:
+### RABBITMQ ##############################################
+  rabbitmq:
+    build:
+      context: ${RABBITMQ_HOST_PATH}
+      args:
+        RABBITMQ_VERSION: ${RABBITMQ_VERSION}
+    container_name: ${RABBITMQ_CONTAINER_NAME}
+    hostname: ${RABBITMQ_HOSTNAME}   
+    ports:
+      - "${RABBITMQ_NODE_HOST_PORT}:5672"
+      - "${RABBITMQ_MANAGEMENT_HTTP_HOST_PORT}:15672"
+    environment:
+      - TZ=${TZ}
+      - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER}
+      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS}
+    volumes:
+      - "${RABBITMQ_HOST_PATH}/enabled_plugins:/etc/rabbitmq/enabled_plugins"
+    networks:
+      backend:
+        ipv4_address: ${RABBITMQ_BACKEND_IP}
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 10s
+      timeout: 10s

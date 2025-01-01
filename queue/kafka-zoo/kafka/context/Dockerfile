@@ -1,4 +1,4 @@
-ARG KAFKA_VERSION
-FROM docker.io/bitnami/kafka:${KAFKA_VERSION}
+ARG KAFKA_VERSION=latest
+FROM bitnami/kafka:${KAFKA_VERSION}
 
-USER root
+LABEL maintainer="zz <373045134@qq.com>"

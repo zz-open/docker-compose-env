@@ -1,0 +1,25 @@
+volumes:
+  zookeeper:
+    driver: ${VOLUMES_DRIVER}
+
+services:
+
+### ZOOKEEPER ##############################################
+  zookeeper:
+    build:
+      context: ${ZOOKEEPER_HOST_PATH}
+      args:
+        ZOOKEEPER_VERSION: ${ZOOKEEPER_VERSION}
+    container_name: ${ZOOKEEPER_CONTAINER_NAME}
+    hostname: ${ZOOKEEPER_HOSTNAME}
+    ports:
+      - "${ZOOKEEPER_HOST_PORT}:2181"
+    environment:
+      TZ: ${TZ}
+      ALLOW_ANONYMOUS_LOGIN: true
+    volumes:
+      - ${DATA_HOST_PATH}/${ZOOKEEPER_CONTAINER_NAME}:/bitnami/zookeeper/data
+      - ${LOG_HOST_PATH}/${ZOOKEEPER_CONTAINER_NAME}:/bitnami/zookeeper/datalog
+    networks:
+      backend:
+        ipv4_address: ${ZOOKEEPER_BACKEND_IP}

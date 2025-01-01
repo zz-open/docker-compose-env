@@ -57,20 +57,25 @@ Full Stack development environment based on Docker Compose.
 ### KAFKA KRAFT模式 (172.21.7.3~172.21.7.4)
 | status | service | backend ip | frontend ip | version | 备注 |
 |---|---|---|---|---|---|
-| [&check;] | kafka-kraft | 172.21.7.3 | 172.20.7.3 | latest | |
+| [&check;] | kafka-kraft | 172.21.7.3 | 172.20.7.3 | 3.9 | |
 | [&check;] | kafka-ui | 172.21.7.4 | 172.20.7.4 | latest | | |
 
-### KAFKA ZOOKEEPER 模式 (172.21.7.5~172.21.7.7)
+### KAFKA ZOOKEEPER 模式 (172.21.7.5~172.21.7.8)
 | status | service | backend ip | frontend ip | version | 备注 |
 |---|---|---|---|---|---|
-| [&check;] | kafka | 172.21.7.5 | 172.20.7.5 | latest | |
-| [&check;] | zookeeper | 172.21.7.6 | 172.20.7.6 | latest | |
+| [&check;] | kafka | 172.21.7.5 | 172.20.7.5 | 3.9 | |
+| [&check;] | zookeeper | 172.21.7.6 | 172.20.7.6 | 3.9 | |
 | [&check;] | kafka-ui | 172.21.7.7 | 172.20.7.7 | latest | | |
+| [&check;] | zoonavigator | 172.21.7.8 | 172.20.7.8 | latest | | |
 
-### ROCKERMQ (172.21.7.8~172.21.7.10)
+### ROCKERMQ (172.21.7.9~172.21.7.10)
 | status | service | backend ip | frontend ip | version | 备注 |
 |---|---|---|---|---|---|
 
+### ROCKERMQ (172.21.7.11~172.21.7.11)
+| status | service | backend ip | frontend ip | version | 备注 |
+|---|---|---|---|---|---|
+| [&check;] | rabbitmq | 172.21.7.11 | 172.20.7.11 | latest | | |
 
 ## CLUSTER (集群服务)
 172.21.4.3 start

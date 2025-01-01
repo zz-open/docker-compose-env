@@ -15,7 +15,7 @@ services:
       - "${KAFKA_UI_HOST_HTTP_PORT}:9000"
     environment:
       TZ: ${TZ}
-      KAFKA_BROKERCONNECT: ${KAFKA_BROKERS}
+      KAFKA_BROKERCONNECT: "${KAFKA_CONTAINER_NAME}:9092"
     networks:
       backend:
         ipv4_address: ${KAFKA_UI_BACKEND_IP}
