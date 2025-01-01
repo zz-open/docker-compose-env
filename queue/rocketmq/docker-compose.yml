@@ -2,6 +2,4 @@ include:
   - ../../docker-compose-network.yml
   - ./rocketmq/docker-compose-broker.yml
   - ./rocketmq/docker-compose-namesrv.yml
-  - ./rocketmq/docker-compose-proxy.yml
-  - ./rocketmq/docker-compose-controller.yml
   - ./rocketmq-dashboard/docker-compose-rocketmq-dashboard.yml

@@ -14,12 +14,20 @@ services:
     ports:
       - "${RABBITMQ_NODE_HOST_PORT}:5672"
       - "${RABBITMQ_MANAGEMENT_HTTP_HOST_PORT}:15672"
+      - "${RABBITMQ_MANAGEMENT_HTTPS_HOST_PORT}:15671"
+      - "${RABBITMQ_WEB_STOMP_HOST_PORT}:15674"
     environment:
-      - TZ=${TZ}
-      - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER}
-      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS}
+      TZ: ${TZ}
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS}
+      RABBITMQ_PLUGINS_DIR: ${RABBITMQ_PLUGINS_DIR}
     volumes:
-      - "${RABBITMQ_HOST_PATH}/enabled_plugins:/etc/rabbitmq/enabled_plugins"
+      - "${DATA_HOST_PATH}/${RABBITMQ_CONTAINER_NAME}:/var/lib/rabbitmq"
+      - "${LOG_HOST_PATH}/${RABBITMQ_CONTAINER_NAME}:/var/log/rabbitmq"
+      - "${RABBITMQ_HOST_PATH}/conf/enabled_plugins:/etc/rabbitmq/enabled_plugins"
+      - "${RABBITMQ_HOST_PATH}/plugins:/opt/rabbitmq/third_plugins"
+      # - "${RABBITMQ_CONF_HOST_PATH}/management_agent.disable_metrics_collector.conf:/etc/rabbitmq/conf.d/management_agent.disable_metrics_collector.conf"
+      # - "${RABBITMQ_CONF_HOST_PATH}/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf"
     networks:
       backend:
         ipv4_address: ${RABBITMQ_BACKEND_IP}

@@ -23,9 +23,9 @@ services:
     hostname: ${ROCKETMQ_BROKER_HOSTNAME}
     command: *command
     volumes:
+      - "${DATA_HOST_PATH}/${ROCKETMQ_BROKER_CONTAINER_NAME}:/home/rocketmq/store"
       - "${LOG_HOST_PATH}/${ROCKETMQ_BROKER_CONTAINER_NAME}:/home/rocketmq/logs"
       - "${ROCKETMQ_HOST_PATH}/conf/broker.conf:/home/rocketmq/broker.conf"
-      - "${DATA_HOST_PATH}/${ROCKETMQ_BROKER_CONTAINER_NAME}:/home/rocketmq/store"
     environment:
       <<: *broker-env
     ports:

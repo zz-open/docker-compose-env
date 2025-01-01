@@ -78,9 +78,7 @@ Full Stack development environment based on Docker Compose.
 |---|---|---|---|---|---|
 | [&cross;] | rocketmq-dashboard | 172.21.7.20 | 172.20.7.20 | latest | | |
 | [&cross;] | rocketmq-namesrv | 172.21.7.21 | 172.20.7.21 | latest | | |
-| [&cross;] | rocketmq-proxy | 172.21.7.22 | 172.20.7.22 | latest | | |
-| [&cross;] | rocketmq-controller | 172.21.7.23 | 172.20.7.23 | latest | | |
-| [&cross;] | rocketmq-broker | 172.21.7.24 | 172.20.7.24 | latest | | |
+| [&cross;] | rocketmq-broker | 172.21.7.22 | 172.20.7.22 | latest | | |
 
 ### Pulsar (172.21.7.31~172.21.7.35)
 | status | service | backend ip | frontend ip | version | 备注 |
