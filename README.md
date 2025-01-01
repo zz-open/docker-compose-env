@@ -91,6 +91,12 @@ Full Stack development environment based on Docker Compose.
 |---|---|---|---|---|---|
 | [&check;] | nats | 172.21.7.40 | 172.20.7.40 | latest | | |
 
+### Beanstalkd (172.21.7.50~172.21.7.51)
+| status | service | backend ip | frontend ip | version | 备注 |
+|---|---|---|---|---|---|
+| [&check;] | beanstalkd | 172.21.7.50 | 172.20.7.50 | latest | | |
+| [&check;] | beanstalkd-console | 172.21.7.51 | 172.20.7.51 | latest | | |
+
 ## Registry (注册中心)
 172.21.8.3 start
 
@@ -117,5 +123,14 @@ Full Stack development environment based on Docker Compose.
 ## Cluster (集群服务)
 172.21.10.3 start
 
-| service | backend ip | frontend ip | version | 备注 |
-|---|---|---|---|---|
+### Ndb Cluster (172.21.10.3~172.21.10.11)
+| status | service | backend ip | frontend ip | version | 备注 |
+|---|---|---|---|---|---|
+| ndb-cluster-pma | 172.21.10.3 | 172.20.10.3 | latest | |
+| ndb-cluster-data1 | 172.21.10.4 | 172.20.10.4 | latest | |
+| ndb-cluster-data2 | 172.21.10.5 | 172.20.10.5 | latest | |
+| ndb-cluster-data3 | 172.21.10.6 | 172.20.10.6 | latest | |
+| ndb-cluster-data4 | 172.21.10.7 | 172.20.10.7 | latest | |
+| ndb-cluster-sql1 | 172.21.10.8 | 172.20.10.8 | latest | |
+| ndb-cluster-sql2 | 172.21.10.9 | 172.20.10.9 | latest | |
+| ndb-cluster-management | 172.21.10.10 | 172.20.10.10 | latest | |

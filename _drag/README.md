@@ -270,17 +270,6 @@ dce start-redis
 | es02 | 172.21.2.203 | 172.20.2.203 | latest |
 | es03 | 172.21.2.204 | 172.20.2.204 | latest |
 
-### MYSQL NDB CLUSTER (172.21.2.210) [完成]
-| service | backend ip | frontend ip | version | 备注 |
-|---|---|---|---|---|
-| mc-pma | 172.21.2.210 | 172.20.2.210 | latest |
-| mc-data1 | 172.21.2.211 | 172.20.2.211 | latest |
-| mc-data2 | 172.21.2.212 | 172.20.2.212 | latest |
-| mc-data3 | 172.21.2.213 | 172.20.2.213 | latest |
-| mc-data4 | 172.21.2.214 | 172.20.2.214 | latest |
-| mc-sql1 | 172.21.2.215 | 172.20.2.215 | latest |
-| mc-sql2 | 172.21.2.216 | 172.20.2.216 | latest |
-| mc-management | 172.21.2.217 | 172.20.2.217 | latest |
 
 ## STACK
 集成环境, 172.21.3.3 开始, 例如lamp, lnmp等 

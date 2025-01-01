@@ -1,0 +1,6 @@
+include:
+  - ../../docker-compose-network.yml
+  - ./ndb/docker-compose-management.yml
+  - ./ndb/docker-compose-data.yml
+  - ./ndb/docker-compose-sql.yml
+  - ./phpmyadmin/docker-compose-phpmyadmin.yml

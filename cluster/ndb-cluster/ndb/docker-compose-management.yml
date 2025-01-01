@@ -1,0 +1,23 @@
+volumes:
+  ndb-management:
+    driver: ${VOLUMES_DRIVER}
+
+services:
+### MYSQL CLUSTER MANAGEMENT NODE  ##############################################
+  ndb-management:
+    build:
+      context: ${MYSQL_CLUSTER_HOST_PATH}
+      args:
+        MYSQL_CLUSTER_VERSION: ${MYSQL_CLUSTER_VERSION}
+    container_name: ${MANAGEMENT_CONTAINER_NAME}
+    hostname: ${MANAGEMENT_HOSTNAME}
+    command: "ndb_mgmd"
+    volumes:
+      - "${DATA_HOST_PATH}/${MANAGEMENT_CONTAINER_NAME}:/var/lib/mysql/"
+      - "${MYSQL_CLUSTER_HOST_PATH}/config/my.cnf:/etc/my.cnf"
+      - "${MYSQL_CLUSTER_HOST_PATH}/config/mysql-cluster.cnf:/etc/mysql-cluster.cnf"
+    environment:
+      TZ: ${TZ}
+    networks:
+      backend:
+        ipv4_address: ${MANAGEMENT_BACKEND_IP}

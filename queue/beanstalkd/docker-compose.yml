@@ -1,0 +1,4 @@
+include:
+  - ../../docker-compose-network.yml
+  - ./beanstalkd/docker-compose-beanstalkd.yml
+  - ./console/docker-compose-beanstalkd-console.yml

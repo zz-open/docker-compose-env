@@ -1,0 +1,24 @@
+x-extra_hosts: &extra_hosts
+  - "${MANAGEMENT_HOSTNAME}:${MANAGEMENT_BACKEND_IP}"
+  - "${DATA_HOSTNAME_NODE1}:${DATA_BACKEND_IP_NODE1}"
+  - "${DATA_HOSTNAME_NODE2}:${DATA_BACKEND_IP_NODE2}"
+  - "${DATA_HOSTNAME_NODE3}:${DATA_BACKEND_IP_NODE3}"
+  - "${DATA_HOSTNAME_NODE4}:${DATA_BACKEND_IP_NODE4}"
+  - "${SQL_HOSTNAME_NODE1}:${SQL_BACKEND_IP_NODE1}"
+  - "${SQL_HOSTNAME_NODE2}:${SQL_BACKEND_IP_NODE2}"
+
+services:
+  ndb-management:
+    extra_hosts: *extra_hosts
+  ndb-data1:
+    extra_hosts: *extra_hosts
+  ndb-data2:
+    extra_hosts: *extra_hosts
+  ndb-data3:
+    extra_hosts: *extra_hosts
+  ndb-data4:
+    extra_hosts: *extra_hosts
+  ndb-sql1:
+    extra_hosts: *extra_hosts
+  ndb-sql2:
+    extra_hosts: *extra_hosts
