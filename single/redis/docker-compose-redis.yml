@@ -2,6 +2,9 @@ volumes:
   redis:
     driver: ${VOLUMES_DRIVER}
 
+x-redis:
+  command: &command "--requirepass ${REDIS_PASSWORD} --appendonly yes"
+
 services:
 
 ### Redis ##############################################
@@ -10,10 +13,10 @@ services:
       context: ${REDIS_HOST_PATH}
       args:
         - REDIS_VERSION=${REDIS_VERSION}
-    hostname: ${REDIS_HOSTNAME}
     container_name: ${REDIS_CONTAINER_NAME}
+    hostname: ${REDIS_HOSTNAME}
     privileged: true
-    command: "--requirepass ${REDIS_PASSWORD} --appendonly yes"
+    command: *command
     volumes:
       - ${DATA_HOST_PATH}/${REDIS_CONTAINER_NAME}:/data
       - ${LOG_HOST_PATH}/${REDIS_CONTAINER_NAME}:/var/log/redis

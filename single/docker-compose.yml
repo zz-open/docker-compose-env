@@ -4,8 +4,8 @@ include:
   - ./busybox/docker-compose-busybox.yml
   - ./mysql57/docker-compose-mysql.yml
   - ./mysql8/docker-compose-mysql.yml
-  - ./redis-stack/docker-compose-redis-stack.yml
   - ./redis/docker-compose-redis.yml
+  - ./redis-stack/docker-compose-redis-stack.yml
   - ./memcached/docker-compose-memcached.yml
-  - ./mongo/docker-compose-mongo.yml
-  - ./mongo/docker-compose-mongo-webui.yml
+  - ./mongo/mongo/docker-compose-mongo.yml
+  - ./mongo/webui/docker-compose-mongo-webui.yml

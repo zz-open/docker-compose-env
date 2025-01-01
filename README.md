@@ -11,8 +11,8 @@ Full Stack development environment based on Docker Compose.
 | [&check;] | busybox | 172.21.4.4 | 172.20.4.4 | latest | |
 | [&check;] | mysql57 | 172.21.4.5 | 172.20.4.5 | 5.7 | |
 | [&check;] | mysql8 | 172.21.4.6 | 172.20.4.6 | 8.0~8.3 | 默认是 8.3 |
-| [&check;] | redis-stack | 172.21.4.7 | 172.20.4.7 | 7.4.0-v1 | |
-| [&check;] | redis | 172.21.4.8 | 172.20.4.8 | 7.4 | |
+| [&check;] | redis | 172.21.4.7 | 172.20.4.7 | 7.4 | |
+| [&check;] | redis-stack | 172.21.4.8 | 172.20.4.8 | 7.4.0-v1 | |
 | [&check;] | memcached | 172.21.4.9 | 172.20.4.9 | 1.6.33 | |
 | [&check;] | mongo | 172.21.4.10 | 172.20.4.10 | 7.0.5 | |
 | [&cross;] | mongo-webui | 172.21.4.11 | 172.20.4.11 | latest | |

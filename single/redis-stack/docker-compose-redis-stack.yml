@@ -2,6 +2,9 @@ volumes:
   redis-stack:
     driver: ${VOLUMES_DRIVER}
 
+x-redis-stack:
+  redis-args: &redis-args "--requirepass ${REDIS_STACK_PASSWORD} --appendonly yes"
+
 services:
 
 ### Redis Stack ##############################################
@@ -10,9 +13,8 @@ services:
       context: ${REDIS_STACK_HOST_PATH}
       args:
         - REDIS_STACK_VERSION=${REDIS_STACK_VERSION}
-    hostname: ${REDIS_STACK_HOSTNAME}
     container_name: ${REDIS_STACK_CONTAINER_NAME}
-    privileged: true
+    hostname: ${REDIS_STACK_HOSTNAME}
     volumes:
       - ${DATA_HOST_PATH}/${REDIS_STACK_CONTAINER_NAME}:/data
       - ${LOG_HOST_PATH}/${REDIS_STACK_CONTAINER_NAME}:/var/log/redis
@@ -21,7 +23,7 @@ services:
       - "${REDIS_STACK_INSIGHT_PORT}:8001"
     environment:
       TZ: "${TZ}"
-      REDIS_ARGS: "--requirepass ${REDIS_STACK_PASSWORD} --appendonly yes"
+      REDIS_ARGS: *redis-args
     networks:
       backend:
         ipv4_address: ${REDIS_STACK_BACKEND_IP}
