@@ -2,6 +2,9 @@ volumes:
   mysql57:
     driver: ${VOLUMES_DRIVER}
 
+x-mysql57:
+  extra-flags: &extra-flags "--default-time-zone=+8:00 --max-allowed-packet=100M --log-timestamps=system"
+  
 services:
 
 ### Mysql57 ################################################
@@ -11,9 +14,9 @@ services:
     hostname: ${MYSQL57_HOSTNAME}
     container_name: ${MYSQL57_CONTAINER_NAME}
     volumes:
-      - ${DATA_HOST_PATH}/${MYSQL57_CONTAINER_NAME}:/bitnami/mysql/data
-      - ${LOG_HOST_PATH}/${MYSQL57_CONTAINER_NAME}:/bitnami/mysql/logs
-      - ${MYSQL57_HOST_PATH}/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+      - "${DATA_HOST_PATH}/${MYSQL57_CONTAINER_NAME}:/bitnami/mysql/data"
+      - "${LOG_HOST_PATH}/${MYSQL57_CONTAINER_NAME}:/opt/bitnami/mysql/logs"
+      - "${MYSQL57_HOST_PATH}/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d"
     ports:
       - "${MYSQL57_HOST_PORT}:3306"
     environment:
@@ -24,11 +27,17 @@ services:
       MYSQL_PASSWORD: "${MYSQL57_PASSWORD}"
       MYSQL_ROOT_PASSWORD: "${MYSQL57_ROOT_PASSWORD}"
       MYSQL_AUTHENTICATION_PLUGIN: "mysql_native_password"
+      MYSQL_CHARACTER_SET: "utf8mb4"
+      MYSQL_COLLATE: "utf8mb4_general_ci"
+      MYSQL_REPLICATION_MODE: "master"
+      MYSQL_EXTRA_FLAGS: *extra-flags
+      MYSQL_ENABLE_SLOW_QUERY: "1"
+      MYSQL_LONG_QUERY_TIME: "1.0"
     networks:
       backend:
         ipv4_address: ${MYSQL57_BACKEND_IP}
     healthcheck:
-      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
-      interval: 10s
+      test: ['CMD', '/opt/bitnami/scripts/mysql/healthcheck.sh']
+      interval: 15s
       timeout: 5s
-      retries: 10
+      retries: 6

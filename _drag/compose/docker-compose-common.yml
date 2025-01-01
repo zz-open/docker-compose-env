@@ -1,7 +1,0 @@
-networks:
-  frontend:
-    external: true
-    name: ${FRONTEND_NETWORK_NAME}
-  backend:
-    external: true
-    name: ${BACKEND_NETWORK_NAME}

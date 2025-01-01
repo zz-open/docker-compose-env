@@ -2,6 +2,9 @@ volumes:
   mysql8:
     driver: ${VOLUMES_DRIVER}
 
+x-mysql8:
+  extra-flags: &extra-flags "--default-time-zone=+8:00 --max-allowed-packet=100M --log-timestamps=system"
+  
 services:
 
 ### Mysql ################################################
@@ -15,22 +18,30 @@ services:
     privileged: true
     user: root
     volumes:
-      - ${DATA_HOST_PATH}/${MYSQL8_CONTAINER_NAME}:/var/lib/mysql # 需要777权限
-      - ${LOG_HOST_PATH}/${MYSQL8_CONTAINER_NAME}:/var/log
-      - ${MYSQL8_HOST_PATH}/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+      - "${DATA_HOST_PATH}/${MYSQL8_CONTAINER_NAME}:/bitnami/mysql/data"
+      - "${LOG_HOST_PATH}/${MYSQL8_CONTAINER_NAME}:/opt/bitnami/mysql/logs"
+      - "${MYSQL57_HOST_PATH}/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d"
     ports:
       - "${MYSQL8_HOST_PORT}:3306"
     environment:
       TZ: "${TZ}"
+      ALLOW_EMPTY_PASSWORD: "yes"
       MYSQL_DATABASE: "${MYSQL8_DATABASE}"
       MYSQL_USER: "${MYSQL8_USER}"
       MYSQL_PASSWORD: "${MYSQL8_PASSWORD}"
       MYSQL_ROOT_PASSWORD: "${MYSQL8_ROOT_PASSWORD}"
+      MYSQL_AUTHENTICATION_PLUGIN: "mysql_native_password"
+      MYSQL_CHARACTER_SET: "utf8mb4"
+      MYSQL_COLLATE: "utf8mb4_general_ci"
+      MYSQL_REPLICATION_MODE: "master"
+      MYSQL_EXTRA_FLAGS: *extra-flags
+      MYSQL_ENABLE_SLOW_QUERY: "1"
+      MYSQL_LONG_QUERY_TIME: "1.0"
     networks:
       backend:
         ipv4_address: ${MYSQL8_BACKEND_IP}
     healthcheck:
-      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
-      interval: 10s
+      test: ['CMD', '/opt/bitnami/scripts/mysql/healthcheck.sh']
+      interval: 15s
       timeout: 5s
-      retries: 10
+      retries: 6
