@@ -1,0 +1,4 @@
+include:
+  - ../../docker-compose-network.yml
+  - ./pulsar/docker-compose-pulsar.yml
+  - ./pulsar-manager/docker-compose-pulsar-manager.yml

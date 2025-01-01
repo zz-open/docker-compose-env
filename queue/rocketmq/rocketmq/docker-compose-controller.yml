@@ -1,0 +1,33 @@
+volumes:
+  rocketmq-controller:
+    driver: ${VOLUMES_DRIVER}
+
+x-build: &build
+  build:
+    context: ${ROCKETMQ_HOST_PATH}
+    args:
+      ROCKETMQ_VERSION: ${ROCKETMQ_VERSION}
+
+x-controller-env: &controller-env
+  TZ: ${TZ}
+
+x-command: &command "sh mqcontroller -c /home/rocketmq/controller.conf"
+
+services:
+
+### ROCKETMQ CONTROLLER ##############################################
+  rocketmq-controller:
+    <<: *build
+    container_name: ${ROCKETMQ_CONTROLLER_CONTAINER_NAME}
+    hostname: ${ROCKETMQ_CONTROLLER_HOSTNAME}
+    command: *command
+    environment:
+      <<: *controller-env
+    volumes:
+      - "${LOG_HOST_PATH}/${ROCKETMQ_CONTROLLER_CONTAINER_NAME}:/home/rocketmq/logs"
+      - "${ROCKETMQ_HOST_PATH}/conf/controller.conf:/home/rocketmq/controller.conf"
+    networks:
+      backend:
+        ipv4_address: ${ROCKETMQ_CONTROLLER_BACKEND_IP}
+    depends_on:
+      - ${ROCKETMQ_NAMESRV_CONTAINER_NAME}

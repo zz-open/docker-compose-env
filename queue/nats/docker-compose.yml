@@ -1,0 +1,4 @@
+include:
+  - ../../docker-compose-network.yml
+  - ./nats/docker-compose-nats.yml
+  - ./nats-box/docker-compose-nats-box.yml

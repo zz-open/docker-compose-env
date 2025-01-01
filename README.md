@@ -2,7 +2,7 @@
 Full Stack development environment based on Docker Compose.
 
 # 服务清单
-## SINGLE (单机服务)
+## Single (单机服务)
 172.21.4.3 start
 
 | status | service | backend ip | frontend ip | version | 备注 |
@@ -21,7 +21,7 @@ Full Stack development environment based on Docker Compose.
 | [&cross;] | phpmyadmin | 172.21.4.14 | 172.20.4.14 | 5.2.1 | |
 | [&cross;] | postgres-postgis | 172.21.4.15 | 172.20.4.15 | latest | |
 
-## PROXY (静态代理服务) 
+## Proxy (静态代理服务) 
 172.21.5.3 start
 
 | 状态 | service | backend ip | frontend ip | version | 备注 |
@@ -31,36 +31,36 @@ Full Stack development environment based on Docker Compose.
 | [&check;] | caddy | 172.21.5.5 | 172.20.5.5 | 2.9 | |
 | [&cross;] | traefik | 172.21.5.6 | 172.20.5.6 | latest | |
 
-## FULLSTACK (全栈式集成服务)
+## FullStack (全栈式集成服务)
 172.21.6.3 start
 
-### METING API (172.21.6.3~172.21.6.4)
+### Meting Api (172.21.6.3~172.21.6.4)
 | status | service | backend ip | frontend ip | version | 备注 |
 |---|---|---|---|---|---|
 | [&check;] | meting-api | 172.21.6.3 | 172.20.6.3 | latest | |
 | [&check;] | caddy | 172.21.6.4 | 172.20.6.4 | latest | | |
 
-### XXJOB (172.21.6.10~172.21.6.11) [完成]
+### Xxjob (172.21.6.10~172.21.6.11) [完成]
 | status | service | backend ip | frontend ip | version | 备注 |
 |---|---|---|---|---|---|
 | [&check;] | xxjob | 172.21.6.10 | 172.20.6.10 | xxjob, 支持arm64 | |
 | [&check;] | xxjob-mysql | 172.21.6.11 | 172.20.6.11 | mysql8.3 | |
 
-### STARROCKS (172.21.6.20~172.21.6.25) [完成]
+### StarRocks (172.21.6.20~172.21.6.25) [完成]
 | status | service | backend ip | frontend ip | version | 备注 |
 |---|---|---|---|---|---|
 | [&check;] | starrocks | 172.21.6.20 | 172.20.6.20 | 3.3-latest | |
 
-## QUEUE (消息队列)
+## Queue (消息队列)
 172.21.7.3 start
 
-### KAFKA KRAFT模式 (172.21.7.3~172.21.7.4)
+### Kafka Raft (172.21.7.3~172.21.7.4)
 | status | service | backend ip | frontend ip | version | 备注 |
 |---|---|---|---|---|---|
 | [&check;] | kafka-kraft | 172.21.7.3 | 172.20.7.3 | 3.9 | |
 | [&check;] | kafka-ui | 172.21.7.4 | 172.20.7.4 | latest | | |
 
-### KAFKA ZOOKEEPER 模式 (172.21.7.5~172.21.7.8)
+### Kafka Zookeeper 模式 (172.21.7.5~172.21.7.8)
 | status | service | backend ip | frontend ip | version | 备注 |
 |---|---|---|---|---|---|
 | [&check;] | kafka | 172.21.7.5 | 172.20.7.5 | 3.9 | |
@@ -68,17 +68,56 @@ Full Stack development environment based on Docker Compose.
 | [&check;] | kafka-ui | 172.21.7.7 | 172.20.7.7 | latest | | |
 | [&check;] | zoonavigator | 172.21.7.8 | 172.20.7.8 | latest | | |
 
-### ROCKERMQ (172.21.7.9~172.21.7.10)
-| status | service | backend ip | frontend ip | version | 备注 |
-|---|---|---|---|---|---|
-
-### ROCKERMQ (172.21.7.11~172.21.7.11)
+### Rabbitmq (172.21.7.11~172.21.7.11)
 | status | service | backend ip | frontend ip | version | 备注 |
 |---|---|---|---|---|---|
 | [&check;] | rabbitmq | 172.21.7.11 | 172.20.7.11 | latest | | |
 
-## CLUSTER (集群服务)
-172.21.4.3 start
+### Rocketmq (172.21.7.20~172.21.7.30)
+| status | service | backend ip | frontend ip | version | 备注 |
+|---|---|---|---|---|---|
+| [&cross;] | rocketmq-dashboard | 172.21.7.20 | 172.20.7.20 | latest | | |
+| [&cross;] | rocketmq-namesrv | 172.21.7.21 | 172.20.7.21 | latest | | |
+| [&cross;] | rocketmq-proxy | 172.21.7.22 | 172.20.7.22 | latest | | |
+| [&cross;] | rocketmq-controller | 172.21.7.23 | 172.20.7.23 | latest | | |
+| [&cross;] | rocketmq-broker | 172.21.7.24 | 172.20.7.24 | latest | | |
+
+### Pulsar (172.21.7.31~172.21.7.35)
+| status | service | backend ip | frontend ip | version | 备注 |
+|---|---|---|---|---|---|
+| [&check;] | pulsar | 172.21.7.31 | 172.20.7.31 | latest | | |
+| [&check;] | pulsar-manager | 172.21.7.32 | 172.20.7.32 | latest | | |
+
+### Nats (172.21.7.40~172.21.7.41)
+| status | service | backend ip | frontend ip | version | 备注 |
+|---|---|---|---|---|---|
+| [&check;] | nats | 172.21.7.40 | 172.20.7.40 | latest | | |
+
+## Registry (注册中心)
+172.21.8.3 start
+
+### Consul (172.21.8.3~172.21.8.5)
+| status | service | backend ip | frontend ip | version | 备注 |
+|---|---|---|---|---|---|
+| [&cross;] | consul | 172.21.8.3 | 172.20.8.3 | latest | | |
+
+### Zookeeper (172.21.8.6~172.21.8.7)
+| status | service | backend ip | frontend ip | version | 备注 |
+|---|---|---|---|---|---|
+| [&cross;] | zookeeper | 172.21.8.3 | 172.20.8.3 | latest | | |
+
+### Nacos (172.21.8.10~172.21.8.20)
+| status | service | backend ip | frontend ip | version | 备注 |
+|---|---|---|---|---|---|
+| [&cross;] | nacos | 172.21.8.10 | 172.20.8.10 | latest | | |
+
+### Etcd (172.21.8.20~172.21.8.21)
+| status | service | backend ip | frontend ip | version | 备注 |
+|---|---|---|---|---|---|
+| [&cross;] | etcd | 172.21.8.20 | 172.20.8.20 | latest | | |
+
+## Cluster (集群服务)
+172.21.10.3 start
 
 | service | backend ip | frontend ip | version | 备注 |
 |---|---|---|---|---|
