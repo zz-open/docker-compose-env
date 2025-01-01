@@ -15,10 +15,10 @@ Full Stack development environment based on Docker Compose.
 | [&check;] | redis-stack | 172.21.4.8 | 172.20.4.8 | 7.4.0-v1 | |
 | [&check;] | memcached | 172.21.4.9 | 172.20.4.9 | 1.6.33 | |
 | [&check;] | mongo | 172.21.4.10 | 172.20.4.10 | 7.0.5 | |
-| [&cross;] | mongo-webui | 172.21.4.11 | 172.20.4.11 | latest | |
-| [&cross;] | postgres | 172.21.4.12 | 172.20.4.12 | 16.2 | |
-| [&cross;] | pgadmin | 172.21.4.13 | 172.20.4.13 | latest | |
-| [&cross;] | phpmyadmin | 172.21.4.14 | 172.20.4.14 | 5.2.1 | |
+| [&check;] | mongo-webui | 172.21.4.11 | 172.20.4.11 | latest | |
+| [&check;] | phpmyadmin | 172.21.4.12 | 172.20.4.12 | 5.2.1 | |
+| [&cross;] | postgres | 172.21.4.13 | 172.20.4.13 | 16.2 | |
+| [&cross;] | pgadmin | 172.21.4.14 | 172.20.4.14 | latest | |
 | [&cross;] | postgres-postgis | 172.21.4.15 | 172.20.4.15 | latest | |
 
 ## Proxy (静态代理服务) 
