@@ -1,0 +1,10 @@
+# ZZ DOMAIN START
+
+127.0.0.1 apache-cdn.dce.test
+127.0.0.1 nginx-cdn.dce.test
+127.0.0.1 caddy-cdn.dce.test
+
+1.12.12.12 doh.pub
+120.53.53.53 doh.pub
+
+# ZZ DOMAIN END
