@@ -25,10 +25,10 @@ rm_all_containers:
 	@${DOCKER} ps -a -q | xargs ${DOCKER} rm -f
 
 prune_docker:
-	@${DOCKER} network prune
-	@${DOCKER} images purge -a
-	@${DOCKER} volume prune -a
 	@${DOCKER} system prune -a
+	@${DOCKER} network prune
+	@${DOCKER} images prune -a
+	@${DOCKER} volume prune -a
 
 .PHONY: rm_single rm_proxy rm_fullstack rm_queue rm_registry rm_cluster
 rm_single:
