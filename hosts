@@ -1,8 +1,4 @@
-# ZZ DOMAIN START
-
-127.0.0.1 apache-cdn.dce.test
-127.0.0.1 nginx-cdn.dce.test
-127.0.0.1 caddy-cdn.dce.test
+#  >>> ZZ START >>>
 
 1.12.12.12 doh.pub
 120.53.53.53 doh.pub
@@ -10,4 +6,8 @@
 141.193.213.20 hub.docker.com
 141.193.213.21 hub.docker.com
 
-# ZZ DOMAIN END
+127.0.0.1 apache-cdn.dce.test
+127.0.0.1 nginx-cdn.dce.test
+127.0.0.1 caddy-cdn.dce.test
+
+# <<< ZZ END <<<
