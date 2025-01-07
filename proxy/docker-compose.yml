@@ -1,5 +1,5 @@
 include:
   - ../docker-compose-network.yml
-  # - ./nginx/docker-compose-nginx.yml
+  - ./nginx/docker-compose-nginx.yml
   # - ./apache/docker-compose-apache.yml
-  - ./caddy/docker-compose-caddy.yml
+  # - ./caddy/docker-compose-caddy.yml
