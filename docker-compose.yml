@@ -15,4 +15,3 @@ networks:
         - subnet: "${BACKEND_SUBNET}"
           gateway: "${BACKEND_SUBNET_GATEWAY}"
 
-services:
