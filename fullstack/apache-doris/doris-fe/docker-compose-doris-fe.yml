@@ -30,7 +30,6 @@ services:
     ports:
       - 8030:8030
       - 9030:9030
-      - 9010:9010
     networks:
       backend:
         ipv4_address: ${APACHE_DORIS_FE_BACKEND_IP}

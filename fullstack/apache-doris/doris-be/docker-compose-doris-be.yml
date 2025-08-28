@@ -19,10 +19,7 @@ services:
     environment:
       TZ: ${TZ}
       FE_SERVERS: fe1:${APACHE_DORIS_FE_BACKEND_IP}:9010
-      BE_ADDR: ${APACHE_DORIS_BE_BACKEND_IP}:9060
-    ports:
-      - 8040:8040
-      - 9060:9060
+      BE_ADDR: ${APACHE_DORIS_BE_BACKEND_IP}:9050
     volumes:
       - apache-doris-be-data:/opt/apache-doris/be/storage
       - apache-doris-be-log:/opt/apache-doris/be/log
