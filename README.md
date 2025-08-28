@@ -72,8 +72,8 @@ Full Stack development environment based on Docker Compose.
 ### Apache Doris (172.21.3.80)
 | service | backend ip | version | 备注 |
 |---|---|---|---|
-| doris-fe | 172.21.3.80 | latest | |
-| doris-be | 172.21.3.81 | latest | |
+| doris-fe | 172.21.3.80 | 3.1.0 | |
+| doris-be | 172.21.3.81 | 3.1.0 | |
 
 ### DEVOPS (172.21.3.3) [完成]
 | service | backend ip | frontend ip | version | 备注 |
