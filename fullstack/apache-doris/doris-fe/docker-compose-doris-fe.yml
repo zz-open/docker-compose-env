@@ -11,6 +11,7 @@ services:
     build:
       context: ${APACHE_DORIS_FE_HOST_PATH}
       args:
+        DOCKER_REGISTRY_URL: ${DOCKER_REGISTRY_URL}
         APACHE_DORIS_VERSION: ${APACHE_DORIS_VERSION}
     container_name: ${APACHE_DORIS_FE_CONTAINER_NAME}
     hostname: ${APACHE_DORIS_FE_HOSTNAME}
