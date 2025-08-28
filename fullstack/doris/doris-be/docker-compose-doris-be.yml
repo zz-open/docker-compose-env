@@ -1,0 +1,33 @@
+volumes:
+  apache-doris-be-data:
+    driver: ${VOLUMES_DRIVER}
+  apache-doris-be-log:
+    driver: ${VOLUMES_DRIVER}
+
+services:
+
+### Apache Doris BE ################################################
+  apache-doris-be:
+    build:
+      context: ${APACHE_DORIS_BE_HOST_PATH}
+      args:
+        APACHE_DORIS_VERSION: ${APACHE_DORIS_VERSION}
+    container_name: ${APACHE_DORIS_BE_CONTAINER_NAME}
+    hostname: ${APACHE_DORIS_BE_HOSTNAME}
+    restart: ${DOCKER_RESTART_POLICY}
+    environment:
+      TZ: ${TZ}
+      FE_SERVERS: fe1:${APACHE_DORIS_FE_BACKEND_IP}:9010
+      BE_ADDR: ${APACHE_DORIS_BE_BACKEND_IP}:9050
+      MYSQL_PWD: ${MYSQL_PWD}
+    ports:
+      - 8040:8040
+      - 9050:9050
+    volumes:
+      - apache-doris-be-data:/opt/apache-doris/be/storage
+      - apache-doris-be-log:/opt/apache-doris/be/log
+      # - ./be/conf/be.conf:/opt/apache-doris/be/conf/be.conf
+      # - ./be/jdbc_drivers:/opt/apache-doris/be/jdbc_drivers
+    networks:
+      backend:
+        ipv4_address: ${APACHE_DORIS_BE_BACKEND_IP}

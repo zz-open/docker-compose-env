@@ -1,0 +1,5 @@
+include:
+  - ../docker-compose-network.yml
+  - ./doris-fe/docker-compose-doris-fe.yml
+  - ./doris-be/docker-compose-doris-be.yml
+  

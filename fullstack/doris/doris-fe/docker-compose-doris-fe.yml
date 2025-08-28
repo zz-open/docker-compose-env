@@ -1,0 +1,34 @@
+volumes:
+  apache-doris-fe-data:
+    driver: ${VOLUMES_DRIVER}
+  apache-doris-fe-log:
+    driver: ${VOLUMES_DRIVER}
+
+services:
+
+### Apache Doris FE ################################################
+  apache-doris-fe:
+    build:
+      context: ${APACHE_DORIS_FE_HOST_PATH}
+      args:
+        APACHE_DORIS_VERSION: ${APACHE_DORIS_VERSION}
+    container_name: ${APACHE_DORIS_FE_CONTAINER_NAME}
+    hostname: ${APACHE_DORIS_FE_HOSTNAME}
+    restart: ${DOCKER_RESTART_POLICY}
+    environment:
+      TZ: ${TZ}
+      FE_SERVERS: fe1:${APACHE_DORIS_FE_BACKEND_IP}:9010
+      FE_ID: 1
+    volumes:
+      - apache-doris-fe-data:/opt/apache-doris/fe/doris-meta
+      - apache-doris-fe-log:/opt/apache-doris/fe/log
+      # - ./fe/conf:/opt/apache-doris/fe/conf
+      # - ./fe/jdbc_drivers:/opt/apache-doris/fe/jdbc_drivers
+      # - ./fe/plugins:/opt/apache-doris/fe/plugins
+    ports:
+      - 8030:8030
+      - 9030:9030
+      - 9010:9010
+    networks:
+      backend:
+        ipv4_address: ${APACHE_DORIS_FE_BACKEND_IP}

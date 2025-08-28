@@ -69,6 +69,12 @@ Full Stack development environment based on Docker Compose.
 | filebeat | 172.21.3.65 | 172.20.3.65 | latest |
 | go-stash | 172.21.3.66 | 172.20.3.66 | latest |
 
+### Doris (172.21.3.80)
+| service | backend ip | version | 备注 |
+|---|---|---|---|
+| doris-fe | 172.21.3.80 | latest | |
+| doris-be | 172.21.3.81 | latest | |
+
 ### DEVOPS (172.21.3.3) [完成]
 | service | backend ip | frontend ip | version | 备注 |
 |---|---|---|---|---|

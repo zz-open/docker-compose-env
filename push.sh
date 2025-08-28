@@ -3,5 +3,5 @@
 echo "自动 push ..."
 git add .
 git commit -m "脚本自动push"
-git push origin main
+git push origin
 echo "自动 push 完毕"
