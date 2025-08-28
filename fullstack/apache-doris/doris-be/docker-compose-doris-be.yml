@@ -27,6 +27,7 @@ services:
     volumes:
       - apache-doris-be-data:/opt/apache-doris/be/storage
       - apache-doris-be-log:/opt/apache-doris/be/log
+      # - ${APACHE_DORIS_FE_HOST_PATH}/be_custom.conf:/opt/apache-doris/fe/conf/be_custom.conf
       # - ./be/conf/be.conf:/opt/apache-doris/be/conf/be.conf
       # - ./be/jdbc_drivers:/opt/apache-doris/be/jdbc_drivers
     networks:
