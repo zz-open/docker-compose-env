@@ -1,25 +1,49 @@
-volumes:
-  flink-data:
-    driver: ${VOLUMES_DRIVER}
-
 services:
 
-### Flink ################################################
-  flink:
+### Flink jobmanager ################################################
+  flink-jobmanager:
     build:
-      context: ${FLINK_HOST_PATH}
+      context: ${FLINK_JOBMANAGER_HOST_PATH}
       args:
         DOCKER_REGISTRY_URL: ${DOCKER_REGISTRY_URL}
-        APACHE_DORIS_VERSION: ${APACHE_DORIS_VERSION}
-    container_name: ${FLINK_CONTAINER_NAME}
-    hostname: ${FLINK_HOSTNAME}
+        FLINK_VERSION: ${FLINK_VERSION}
+    container_name: ${FLINK_JOBMANAGER_CONTAINER_NAME}
+    hostname: ${FLINK_JOBMANAGER_HOSTNAME}
     restart: ${DOCKER_RESTART_POLICY}
+    command: jobmanager
     environment:
-      TZ: ${TZ}
+      - TZ=${TZ}
+      - |
+        FLINK_PROPERTIES=
+        jobmanager.rpc.address: jobmanager
     volumes:
-      - apache-doris-fe-data:/opt/apache-doris/fe/doris-meta
+      # - ${FLINK_JOBMANAGER_HOST_PATH}/jobmanager:/opt/flink/usrlib
+      - ${FLINK_JOBMANAGER_HOST_PATH}/jobmanager/conf/:/opt/flink/conf/
     ports:
-      - 8030:8030
+      - "18081:18081"
     networks:
       backend:
-        ipv4_address: ${FLINK_BACKEND_IP}
+        ipv4_address: ${FLINK_JOBMANAGER_BACKEND_IP}
+
+  ### Flink taskmanager ################################################
+  flink-taskmanager:
+    build:
+      context: ${FLINK_TASKMANAGER_HOST_PATH}
+      args:
+        DOCKER_REGISTRY_URL: ${DOCKER_REGISTRY_URL}
+        FLINK_VERSION: ${FLINK_VERSION}
+    container_name: ${FLINK_TASKMANAGER_CONTAINER_NAME}
+    hostname: ${FLINK_TASKMANAGER_HOSTNAME}
+    restart: ${DOCKER_RESTART_POLICY}
+    command: taskmanager
+    environment:
+      - TZ=${TZ}
+      - |
+        FLINK_PROPERTIES=
+        jobmanager.rpc.address: jobmanager
+    volumes:
+      # - ${FLINK_JOBMANAGER_HOST_PATH}/taskmanager:/opt/flink/usrlib
+      - ${FLINK_JOBMANAGER_HOST_PATH}/taskmanager/conf/:/opt/flink/conf/
+    networks:
+      backend:
+        ipv4_address: ${FLINK_TASKMANAGER_BACKEND_IP}
