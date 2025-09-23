@@ -20,7 +20,7 @@ services:
       # - ${FLINK_JOBMANAGER_HOST_PATH}/jobmanager:/opt/flink/usrlib
       - ${FLINK_JOBMANAGER_HOST_PATH}/jobmanager/conf/:/opt/flink/conf/
     ports:
-      - "18081:18081"
+      - "${FLINK_JOBMANAGER_HOST_PORT}:8081"
     networks:
       backend:
         ipv4_address: ${FLINK_JOBMANAGER_BACKEND_IP}

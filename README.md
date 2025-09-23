@@ -74,6 +74,9 @@ Full Stack development environment based on Docker Compose.
 |---|---|---|---|
 | doris-fe | 172.21.3.80 | 3.1.0 | |
 | doris-be | 172.21.3.81 | 3.1.0 | |
+| mysql | 172.21.3.87 | 8.3 | |
+| flink-jobmanager | 172.21.3.89 | 2.1.0-java17 | |
+| flink-taskmanager | 172.21.3.90 | 2.1.0-java17 | |
 
 ### DEVOPS (172.21.3.3) [完成]
 | service | backend ip | frontend ip | version | 备注 |

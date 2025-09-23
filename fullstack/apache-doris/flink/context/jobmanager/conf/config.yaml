@@ -6,7 +6,7 @@ taskmanager:
     process:
       size: 1728m
   bind-host: 0.0.0.0
-  numberOfTaskSlots: 1
+  numberOfTaskSlots: 5
 jobmanager:
   execution:
     failover-strategy: region
@@ -24,7 +24,6 @@ parallelism:
   default: 1
 rest:
   address: 0.0.0.0
-  port: 18081
 env:
   java:
     opts:
