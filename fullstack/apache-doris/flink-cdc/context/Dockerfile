@@ -1,0 +1,7 @@
+ARG DOCKER_REGISTRY_URL
+ARG APACHE_DORIS_VERSION=latest
+FROM ${DOCKER_REGISTRY_URL}apache.doris:fe-${APACHE_DORIS_VERSION}
+
+LABEL maintainer="zaizai <373045134@qq.com>"
+
+ENV TZ=Asia/Shanghai
