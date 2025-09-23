@@ -1,0 +1,53 @@
+volumes:
+  mysql-data:
+    driver: ${VOLUMES_DRIVER}
+  mysql-log:
+    driver: ${VOLUMES_DRIVER}
+
+x-mysql-environment: &mysql-environment
+    TZ: "${TZ}"
+    ALLOW_EMPTY_PASSWORD: "yes"
+    MYSQL_AUTHENTICATION_PLUGIN: "mysql_native_password"
+    MYSQL_CHARACTER_SET: "utf8mb4"
+    MYSQL_COLLATE: "utf8mb4_bin"
+    MYSQL_REPLICATION_MODE: "master"
+    MYSQL_ENABLE_SLOW_QUERY: "1"
+    MYSQL_LONG_QUERY_TIME: "1.0"
+    MYSQL_EXTRA_FLAGS: "--secure-file-priv=/bitnami/mysql/secure-files/ --binlog-expire-logs-seconds=604800 --default-time-zone=+8:00 --max-allowed-packet=100M --log-timestamps=system --innodb-use-native-aio=0 --tls-version=TLSv1.2,TLSv1.3"
+    MYSQL_SQL_MODE: "STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION"
+
+x-mysql-healthcheck: &mysql-healthcheck
+    test: ['CMD', '/opt/bitnami/scripts/mysql/healthcheck.sh']
+    interval: 15s
+    timeout: 5s
+    retries: 5
+    start_period: 10s
+
+services:
+
+### Mysql ################################################
+  mysql:
+    build:
+      context: ${MYSQL_HOST_PATH}
+      args:
+        DOCKER_REGISTRY_URL: ${DOCKER_REGISTRY_URL}
+    hostname: ${MYSQL_HOSTNAME}
+    container_name: ${MYSQL_CONTAINER_NAME}
+    restart: ${DOCKER_RESTART_POLICY}
+    volumes:
+      - "mysql-data:/bitnami/mysql/data"
+      - "mysql-log:/opt/bitnami/mysql/logs"
+      - "${MYSQL_HOST_PATH}/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d"
+    ports:
+      - "${MYSQL_HOST_PORT}:3306"
+    environment:
+      <<: *mysql-environment
+      MYSQL_SQL_MODE: "STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION"
+      MYSQL_DATABASE: "${MYSQL_DATABASE}"
+      MYSQL_USER: "${MYSQL_USER}"
+      MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+    networks:
+      backend:
+        ipv4_address: ${MYSQL_BACKEND_IP}
+    healthcheck: *mysql-healthcheck
