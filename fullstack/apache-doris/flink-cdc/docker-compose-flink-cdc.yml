@@ -1,35 +1,25 @@
 volumes:
-  apache-doris-fe-data:
-    driver: ${VOLUMES_DRIVER}
-  apache-doris-fe-log:
+  flink-cdc:
     driver: ${VOLUMES_DRIVER}
 
 services:
 
-### Apache Doris FE ################################################
-  apache-doris-fe:
+### Flink-CDC ################################################
+  flink-cdc:
     build:
-      context: ${APACHE_DORIS_FE_HOST_PATH}
+      context: ${FLINK_CDC_HOST_PATH}
       args:
         DOCKER_REGISTRY_URL: ${DOCKER_REGISTRY_URL}
         APACHE_DORIS_VERSION: ${APACHE_DORIS_VERSION}
-    container_name: ${APACHE_DORIS_FE_CONTAINER_NAME}
-    hostname: ${APACHE_DORIS_FE_HOSTNAME}
+    container_name: ${FLINK_CDC_CONTAINER_NAME}
+    hostname: ${FLINK_CDC_HOSTNAME}
     restart: ${DOCKER_RESTART_POLICY}
     environment:
       TZ: ${TZ}
-      FE_SERVERS: fe1:${APACHE_DORIS_FE_BACKEND_IP}:9010
-      FE_ID: 1
     volumes:
       - apache-doris-fe-data:/opt/apache-doris/fe/doris-meta
-      - apache-doris-fe-log:/opt/apache-doris/fe/log
-      - ${APACHE_DORIS_FE_HOST_PATH}/fe_custom.conf:/opt/apache-doris/fe/conf/fe_custom.conf
-      # - ./fe/conf:/opt/apache-doris/fe/conf
-      # - ./fe/jdbc_drivers:/opt/apache-doris/fe/jdbc_drivers
-      # - ./fe/plugins:/opt/apache-doris/fe/plugins
     ports:
       - 8030:8030
-      - 9030:9030
     networks:
       backend:
-        ipv4_address: ${APACHE_DORIS_FE_BACKEND_IP}
+        ipv4_address: ${FLINK_CDC_BACKEND_IP}
